@@ -1,30 +1,23 @@
 ﻿// See https://aka.ms/new-console-template for more information
-var numeroDe1A3 = RetornaDe1a10().Onde(x => x <= 3);
-foreach(var i in numeroDe1A3)
+var numberFrom1To3 = ReturnFrom1To10().Onde(x => x <= 3);
+foreach(var i in numberFrom1To3)
 {
     Console.WriteLine(i);
 }
 
 
-static IEnumerable<int> RetornaDe1a10()
+static IEnumerable<int> ReturnFrom1To10()
 {
-    yield return 1;
-    yield return 2;
-    yield return 3;
-    yield return 4;
-    yield return 5;
-    yield return 6;
-    yield return 7;
-    yield return 8;
-    yield return 9;
-    yield return 10;
+    var i = 0;
+    while(true)
+        yield return i++;
 }
 
-public static class MeuLinq 
+public static class MyLinq 
 {
-    public static IEnumerable<T> Onde<T>(this IEnumerable<T> lista, Func<T, bool> condicao)
+    public static IEnumerable<T> Onde<T>(this IEnumerable<T> list, Func<T, bool> condicao)
     {
-            foreach(var item in lista)
+            foreach(var item in list)
             {
                 if(condicao(item))
                     yield return item;
